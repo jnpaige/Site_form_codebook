@@ -1,0 +1,205 @@
+---
+title: "A codebook for collecting data from archaeological site forms in Louisiana"
+author: "Jonathan Paige^[New Mexico Consortium, jonathan.n.paige@Gmail.com]"
+output:
+  word_document: default
+  pdf_document:
+    keep_tex: yes
+    number_sections: yes
+    toc: true
+    toc_depth: 3
+  html_document:
+    df_print: paged
+header-includes:
+- \usepackage{float}
+- \floatplacement{figure}{hp}
+- \usepackage{booktabs}
+- \usepackage[font=small,labelfont=bf]{caption}
+- \usepackage{setspace}\doublespacing
+#abstract: |
+keywords: |
+  Louisiana archaeology; site forms; SHPO; codebook; text coding
+highlights: |
+  These are the highlights.
+---
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+# Version details:
+
+This report was generated on `r Sys.time()`
+
+The current Git commit details are:
+
+```{r}
+if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())
+```
+
+This codebook was developed as part of a broader project investigating the reliability of large language models (LLMs) in performing text coding tasks in archaeology. It is targeted specifically to site forms on file with the Louisiana Division of Archaeology (Louisiana SHPO), and addresses a restricted set of traits corresponding to fields recorded in the Louisiana archaeological site database. The source database has 87 possible traits. Each trait is coded as present (1) or absent (0) based on a reading of the narrative and structured fields in a given site form. This codebook provides guidance on making those presence/absence decisions for a subset of those traits. 
+
+**A note on Louisiana site form structure:** Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. Both are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence.
+
+---
+
+# Definitions
+
+**Pre-Contact period**
+Any occupation, use, or deposition of materials at a site that pre-dates sustained European contact in the relevant region of Louisiana. For most of Louisiana this is broadly taken as pre-dating the late 17th century (ca. pre-1700 CE), though recorders may use different cut-off dates. Both explicit statements and inferred dates (e.g., radiocarbon dates, diagnostic artifact types) are acceptable evidence.
+
+**Post-Contact period**
+Any occupation, use, or deposition of materials at a site that post-dates sustained European contact (broadly ca. post-1700 CE in Louisiana). Includes colonial French, Spanish, American, and later periods. Historic-era Euro-American, Creole, and African-descended communities may all fall within this period.
+
+**Caddo period**
+Occupation or material culture attributed to Caddo-speaking peoples or their archaeological antecedents in Louisiana, broadly spanning ca. 800–1700 CE (Late Woodland through Protohistoric), though boundaries are debated and vary by subregion. Includes both the Formative Caddo and Caddo tradition periods. Dating may be based on diagnostic ceramics, architecture, or radiocarbon dates.
+
+**Archaic period**
+Occupation or material culture attributed broadly to the Archaic, spanning roughly 10,000–3,000 BP in Louisiana, though exact boundaries vary by subregion and author. Includes Early, Middle, and Late Archaic subperiods. Dating may be based on diagnostic projectile point types, radiocarbon dates, or stratigraphic position.
+
+**Chipped stone**
+Any artifact produced through knapping (percussion or pressure flaking), including debitage (flakes, cores, shatter), tools (projectile points, scrapers, bifaces, etc.), and partially reduced nodules. Groundstone tools that also bear flaking scars do not automatically qualify; the primary reduction method should be knapping.
+
+**Projectile point**
+A bifacially or unifacially retouched tool interpreted as a tip or hafted element of a projectile weapon (spear, atlatl dart, or arrow). Formal typological assignments (e.g., "Gary point", "Perdiz point") are sufficient evidence. Fragments described as probable projectile points are acceptable. Drills and perforators should not be coded as projectile points unless the recorder explicitly identifies them as such.
+
+**Fire-cracked rock (FCR)**
+Thermally fractured rock resulting from exposure to heat, typically associated with cooking features, earth ovens, or hearths. May be described as burned rock, fire-cracked rock, FCR, heat-fractured rock, or similar terms. Rock that is merely discolored or scorched but not fractured does not qualify.
+
+---
+
+# Louisiana Site Form Codes
+
+## Pre-Contact component (Pre\_Conta)
+
+**Short Description:** Evidence of a pre-contact occupation or use of the site.
+
+**Definition:** The site form records evidence either in structured fields or narrative text indicating that some portion of the site's archaeological record dates to the period before sustained European contact (broadly pre-1700 CE in Louisiana). This may include diagnostic artifacts, radiocarbon dates, or interpretive statements by the recorder.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., period checkboxes, cultural affiliation fields, artifact type tallies referencing prehistoric types).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. A site described as exclusively historic-era should be coded as absent.
+
+**Typical exemplars:** Recorder checks "prehistoric" in the cultural period field. Narrative states "the site contains a prehistoric component evidenced by lithic debitage." A cultural affiliation field lists "unknown prehistoric." A radiocarbon date pre-dating 1700 CE is recorded.
+
+**Atypical exemplars:** No explicit period designation, but the artifact inventory lists only chipped stone debitage and a Gary point with no mention of historic-era materials. A site is described as "multicomponent" and the prehistoric component is mentioned only in passing in the survey narrative.
+
+**Close but no:** A historic-era site form that mentions "no prehistoric materials observed." Presence of burned rock or undated features alone, with no other indicator of pre-contact occupation. A site form for an extant historic structure that references "prehistoric regional context" in a background section without implying materials were recovered.
+
+---
+
+## Post-Contact component (Post\_Conta)
+
+**Short Description:** Evidence of a post-contact occupation or use of the site.
+
+**Definition:** The site form records evidence indicating that some portion of the site's archaeological record dates to the period after sustained European contact (broadly post-1700 CE in Louisiana). This may include historic-era artifact types, documentary references, architectural remains, or explicit interpretive statements.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., period checkboxes listing "historic," "colonial," "19th century," etc.; artifact tallies listing historic ceramics, glass, nails, or other temporally diagnostic historic materials).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. A site described as exclusively prehistoric should be coded as absent.
+
+**Typical exemplars:** Recorder checks "historic" in the period field. Narrative states "the site contains historic-era debris including Europeanmade ceramics and cut nails." Cultural affiliation listed as "Anglo-American" or "French Colonial." A standing structure on the site dates to the 19th century.
+
+**Atypical exemplars:** No explicit period designation, but the artifact inventory lists whiteware sherds, window glass, and wire nails with no mention of prehistoric materials. A site described as "multicomponent" where the historic component is noted only briefly.
+
+**Close but no:** A prehistoric site whose background section discusses the broader historic settlement of the region. Presence of modern intrusions (e.g., fence posts, drainage pipes) noted but not interpreted as a historic-era occupation. A site where the recorder mentions a nearby historic structure but does not indicate association with the recorded site.
+
+---
+
+## Caddo period component (Caddo\_Unkn)
+
+**Short Description:** Evidence of a Caddo-period occupation, regardless of specific subperiod assignment.
+
+**Definition:** The site form records evidence attributing some portion of the site's archaeological record to Caddo-speaking peoples or the Caddo archaeological tradition, broadly spanning ca. 800–1700 CE. The code name "Caddo_Unkn" reflects that the specific Caddo subperiod (e.g., Early, Middle, Late Caddo; Formative Caddo; Protohistoric) may be unknown or unspecified. This trait should be coded as present whenever Caddo affiliation is indicated, regardless of whether a finer subperiod is also assigned.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., cultural affiliation field lists "Caddo," "Caddoan," or a named Caddo-tradition phase; artifact field lists Caddo ceramic types).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Archaic, Woodland, or other non-Caddo prehistoric components should not be coded as present here.
+
+**Typical exemplars:** Cultural affiliation field states "Caddo." Narrative describes "Caddo ceramic sherds including engraved fine ware." A named phase such as "Haley," "Belcher," or "Kinsloe" is listed. The recorder assigns the site to the "Late Prehistoric" period and describes Caddo-tradition ceramic types.
+
+**Atypical exemplars:** The recorder uses only the term "Late Prehistoric" without naming Caddo explicitly, but the artifact inventory includes ceramic types (e.g., Friendship Engraved, Hickory Fine Engraved) diagnostic of the Caddo tradition. A site recorded near known Caddo territory where the artifact assemblage is consistent with Caddo occupation but not explicitly labeled as such by the recorder.
+
+**Close but no:** Sites described as Woodland-period only, even if geographically within the Caddo region. Sites with a general "prehistoric" designation and no specific Caddo indicators in either the structured fields or the narrative. Presence of a single chipped stone tool without ceramic evidence or other Caddo indicators, unless explicitly attributed to the Caddo period by the recorder.
+
+---
+
+## Archaic period component (Arch\_Unkn)
+
+**Short Description:** Evidence of an Archaic-period occupation, regardless of specific subperiod (Early, Middle, or Late Archaic).
+
+**Definition:** The site form records evidence attributing some portion of the site's archaeological record to the Archaic period, broadly spanning ca. 10,000–3,000 BP. The code name "Arch\_Unkn" reflects that the specific Archaic subperiod may be unknown. This trait is coded as present whenever an Archaic occupation is indicated, regardless of whether a finer temporal assignment is also made.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., period field lists "Archaic," "Early Archaic," "Middle Archaic," "Late Archaic"; artifact field lists Archaic diagnostic projectile point types).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Paleoindian, Woodland, Caddo, or other non-Archaic components should not be coded as present here.
+
+**Typical exemplars:** Period field states "Archaic." Narrative describes "a Late Archaic midden." Diagnostic projectile point types associated with the Archaic (e.g., Gary, Motley, Evans, Pontchartrain) are listed in the artifact inventory. Recorder notes "undifferentiated Archaic lithic scatter."
+
+**Atypical exemplars:** No explicit period designation, but the artifact inventory lists only Gary or Evans points (well-established Archaic diagnostics in Louisiana) with no other temporal indicators. A site described as a shell midden that the recorder assigns to "prehistoric" but whose radiocarbon dates fall within the Archaic range.
+
+**Close but no:** A site described as "prehistoric" with only generic lithic debitage and no diagnostic materials. Sites assigned to the Woodland period only. Sites where the recorder mentions "possible Archaic materials" without further support. Paleoindian components only.
+
+---
+
+## Chipped stone (Chipped\_Stone)
+
+**Short Description:** Presence of chipped stone artifacts, including tools and/or debitage.
+
+**Definition:** The site form records the presence of any artifact produced primarily through knapping (flaking), including but not limited to: debitage (flakes, cores, angular shatter), bifaces, projectile points, scrapers, drills, perforators, and other flaked stone tools. Groundstone tools are excluded unless they also bear unambiguous knapping scars interpreted as intentional reduction.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., artifact tally includes debitage, flakes, cores, bifaces, or other knapped tool categories; narrative mentions lithic scatter or chipped stone).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Sites with only groundstone, ceramics, or other non-knapped artifact classes should be coded as absent.
+
+**Typical exemplars:** Artifact tally includes a count of "lithic debitage" or "flakes." Narrative states "chipped stone tools were recovered." Projectile points, scrapers, or bifaces are listed in the artifact inventory. The site is described as a "lithic scatter."
+
+**Atypical exemplars:** No explicit mention of chipped stone, but a projectile point is listed in the artifact inventory (projectile points are chipped stone by definition). Narrative mentions "prehistoric artifacts" and the only illustrated or described items are flaked tools.
+
+**Close but no:** Only groundstone (e.g., grinding stones, manos, metates) present, with no mention of knapped materials. Only ceramics and historic-era artifacts listed. The word "stone" appears only in the context of construction materials or geology with no artifact referent.
+
+---
+
+## Projectile point (Proj\_Point)
+
+**Short Description:** Presence of one or more projectile points.
+
+**Definition:** The site form records the presence of at least one artifact identified as a projectile point — a bifacially or unifacially retouched tool interpreted as the tip or hafted element of a spear, atlatl dart, or arrow. Formal typological designations (e.g., "Gary point," "Alba point," "Perdiz point") are sufficient. Fragments described as probable projectile points are acceptable. Tools identified primarily as drills or perforators are excluded unless the recorder explicitly also identifies them as projectile points.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., artifact tally includes "projectile point," "point," or a named type; narrative describes points or arrowheads).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. General lithic debitage or undifferentiated flakes without mention of projectile points should be coded as absent.
+
+**Typical exemplars:** Artifact tally lists "3 projectile points." Narrative states "a Gary point was recovered from the surface." The recorder lists "Alba points" or "arrowheads" in the artifact inventory. A point fragment is described as such.
+
+**Atypical exemplars:** No explicit category labeled "projectile point," but the artifact inventory lists a named type that is unambiguously a projectile point form (e.g., "2 Perdiz," "1 Scallorn"). Narrative describes "a bifacial point tip fragment."
+
+**Close but no:** Only debitage or cores listed with no mention of finished point forms. A "possible projectile point" noted by the recorder without further description. Drills or perforators listed but not described as projectile points. The word "point" appears only in a geographic context (e.g., "Poverty Point culture" or a place name). Descriptions of bifaces, biface preforms, or blanks without further specification of whether the represent projectile points. 
+
+---
+
+## Fire-cracked rock (FCR)
+
+**Short Description:** Presence of fire-cracked rock (thermally fractured rock).
+
+**Definition:** The site form records the presence of rock that has been fractured as a result of exposure to high heat, typically associated with cooking features, earth ovens, hearths, or burned rock middens. May be referred to as "fire-cracked rock," "FCR," "burned rock," "heat-fractured rock," "fire-altered rock," or similar terms. Rock that is merely discolored or stained without fracturing does not qualify.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., artifact or feature tally includes FCR, burned rock, or a feature type associated with FCR such as "burned rock midden" or "earth oven").
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Thermally discolored but non-fractured rock does not qualify. Burned structural materials (e.g., burned daub, burned brick) are excluded.
+
+**Typical exemplars:** Artifact tally includes a count or weight of "FCR" or "fire-cracked rock." Narrative states "burned rock was recovered from a hearth feature." A feature is described as a "burned rock midden." The recorder notes "considerable fire-cracked limestone."
+
+**Atypical exemplars:** The site is described as containing hearth features and the artifact inventory includes "burned material" — if it is clear from context that this refers to rock rather than organic material or ceramics, code as present. A burned rock cluster is described in the feature section but not explicitly tallied in the artifact section.
+
+**Close but no:** Only burned bone, burned ceramics, or burned organic material mentioned, with no reference to burned or fractured rock. Scorched sediment or ash described without associated fractured rock. A hearth feature is listed but no mention is made of associated rock. "Burned" applied only to structural daub or construction materials.
+
+---
+
+# Bibliography
+
+
