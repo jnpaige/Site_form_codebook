@@ -43,7 +43,8 @@ if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r:
 
 This codebook was developed as part of a broader project investigating the reliability of large language models (LLMs) in performing text coding tasks in archaeology. It is targeted specifically to site forms on file with the Louisiana Division of Archaeology (Louisiana SHPO), and addresses a restricted set of traits corresponding to fields recorded in the Louisiana archaeological site database. The source database has 87 possible traits. Each trait is coded as present (1) or absent (0) based on a reading of the narrative and structured fields in a given site form. This codebook provides guidance on making those presence/absence decisions for a subset of those traits. 
 
-**A note on Louisiana site form structure:** Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. Both are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence.
+# Source Structure
+Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. Both are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence. Furthermore, the site forms are appended to one another when new work is performed. So, the findings of an earlier investigation may find different things from a later investigation. Absence in one investigation should not override a presence determination in a separate investigation, when the whole text is being coded.  
 
 ---
 
@@ -80,13 +81,13 @@ Thermally fractured rock resulting from exposure to heat, typically associated w
 
 **Definition:** The site form records evidence either in structured fields or narrative text indicating that some portion of the site's archaeological record dates to the period before sustained European contact (broadly pre-1700 CE in Louisiana). This may include diagnostic artifacts, radiocarbon dates, or interpretive statements by the recorder.
 
-**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., period checkboxes, cultural affiliation fields, artifact type tallies referencing prehistoric types).
+**Inclusion criteria:** Evidence in text OR indicated in structured fields (e.g., period checkboxes, cultural affiliation fields, artifact type tallies referencing prehistoric types).
 
 **Exclusion criteria:** Not described in text AND not indicated in structured fields. A site described as exclusively historic-era should be coded as absent.
 
-**Typical exemplars:** Recorder checks "prehistoric" in the cultural period field. Narrative states "the site contains a prehistoric component evidenced by lithic debitage." A cultural affiliation field lists "unknown prehistoric." A radiocarbon date pre-dating 1700 CE is recorded.
+**Typical exemplars:** Recorder checks "prehistoric" in the cultural period field. Narrative states cases like "the site contains a prehistoric component" or a cultural affiliation field lists "unknown prehistoric. Sites that are lithic scatters, or map onto any cultural phase before European contact. 
 
-**Atypical exemplars:** No explicit period designation, but the artifact inventory lists only chipped stone debitage and a Gary point with no mention of historic-era materials. A site is described as "multicomponent" and the prehistoric component is mentioned only in passing in the survey narrative.
+**Atypical exemplars:** Historic sites with presence of prehistoric artifacts. A site is described as "multicomponent" and the prehistoric component is mentioned only in passing in the survey narrative.
 
 **Close but no:** A historic-era site form that mentions "no prehistoric materials observed." Presence of burned rock or undated features alone, with no other indicator of pre-contact occupation. A site form for an extant historic structure that references "prehistoric regional context" in a background section without implying materials were recovered.
 
