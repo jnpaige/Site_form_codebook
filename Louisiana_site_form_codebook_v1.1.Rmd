@@ -41,10 +41,11 @@ The current Git commit details are:
 if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())
 ```
 
-This codebook was developed as part of a broader project investigating the reliability of large language models (LLMs) in performing text coding tasks in archaeology. It is targeted specifically to site forms on file with the Louisiana Division of Archaeology (Louisiana SHPO), and addresses a restricted set of traits corresponding to fields recorded in the Louisiana archaeological site database. The source database has 87 possible traits. Each trait is coded as present (1) or absent (0) based on a reading of the narrative and structured fields in a given site form. This codebook provides guidance on making those presence/absence decisions for a subset of those traits, and is also expanded to categorize text according to a set of possibilities, like NRHP eligiblity, and the dates of those determinations. 
+This codebook was developed as part of a broader project investigating the reliability of large language models (LLMs) in performing text coding tasks in archaeology. It is targeted specifically to site forms on file with the Louisiana Division of Archaeology (Louisiana SHPO), and addresses traits corresponding to fields recorded in the Louisiana archaeological site database. Traits include presence/absence judgements about cultural components and artifact classes, as well as categorical and numeric extractions that require associating information with metadata — for example, NRHP eligibility determinations must be paired with the date of the form reporting that determination, because eligibility status changes over time. These judgements must be based on a reading of the narrative and structured fields across site forms. This codebook provides guidance on making those judgements.
 
 # Source Structure
-Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. Both are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence. Furthermore, the site forms are appended to one another when new work is performed. So, the findings of an earlier investigation may find different things from a later investigation. Absence in one investigation should not override a presence determination in a separate investigation, when the whole text is being coded.  
+
+Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. Both are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence. Furthermore, the site forms are appended to one another when new work is performed. So, the findings of an earlier investigation may find different things from a later investigation. Categorization of a site based on one investigation should not override a presence determination in a separate investigation, when the whole text is being coded; instead each investigation should be coded independently and metadata about those investigations should be incorporated.
 
 ---
 
@@ -71,7 +72,8 @@ A bifacially or unifacially retouched tool interpreted as a tip or hafted elemen
 **Fire-cracked rock (FCR)**
 Thermally fractured rock resulting from exposure to heat, typically associated with cooking features, earth ovens, or hearths. May be described as burned rock, fire-cracked rock, FCR, heat-fractured rock, or similar terms. Rock that is merely discolored or scorched but not fractured does not qualify.
 
-
+**NRHP eligibility**
+Status of a site with regard to National Register of Historic Places inclusion. Eligible sites are eligible for inclusion; listed sites are listed; most sites may have undetermined or potential eligibility, barring more information typically gained through historical records or more intensive fieldwork focused on testing the site for research potential.
 
 ---
 
@@ -89,13 +91,13 @@ Thermally fractured rock resulting from exposure to heat, typically associated w
 
 **Exclusion criteria:** Not described in text AND not indicated in structured fields. A site described as exclusively historic-era should be coded as absent.
 
-**Typical exemplars:** Recorder checks "prehistoric" in the cultural period field. Narrative states cases like "the site contains a prehistoric component" or a cultural affiliation field lists "unknown prehistoric. Sites that are lithic scatters, or map onto any cultural phase before European contact. 
+**Typical exemplars:** Recorder checks "prehistoric" in the cultural period field. Narrative states cases like "the site contains a prehistoric component" or a cultural affiliation field lists "unknown prehistoric." Sites that are lithic scatters, or map onto any cultural phase before European contact.
 
 **Atypical exemplars:** Historic sites with presence of prehistoric artifacts. A site is described as "multicomponent" and the prehistoric component is mentioned only in passing in the survey narrative.
 
 **Close but no:** A historic-era site form that mentions "no prehistoric materials observed." Presence of burned rock or undated features alone, with no other indicator of pre-contact occupation. A site form for an extant historic structure that references "prehistoric regional context" in a background section without implying materials were recovered.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met hte inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
 
 ---
 
@@ -111,13 +113,13 @@ Thermally fractured rock resulting from exposure to heat, typically associated w
 
 **Exclusion criteria:** Not described in text AND not indicated in structured fields. A site described as exclusively prehistoric should be coded as absent.
 
-**Typical exemplars:** Recorder checks "historic" in the period field. Narrative states "the site contains historic-era debris including Europeanmade ceramics and cut nails." Cultural affiliation listed as "Anglo-American" or "French Colonial." A standing structure on the site dates to the 19th century.
+**Typical exemplars:** Recorder checks "historic" in the period field. Narrative states "the site contains historic-era debris including European-made ceramics and cut nails." Cultural affiliation listed as "Anglo-American" or "French Colonial." A standing structure on the site dates to the 19th century.
 
 **Atypical exemplars:** No explicit period designation, but the artifact inventory lists whiteware sherds, window glass, and wire nails with no mention of prehistoric materials. A site described as "multicomponent" where the historic component is noted only briefly.
 
 **Close but no:** A prehistoric site whose background section discusses the broader historic settlement of the region. Presence of modern intrusions (e.g., fence posts, drainage pipes) noted but not interpreted as a historic-era occupation. A site where the recorder mentions a nearby historic structure but does not indicate association with the recorded site.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met hte inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
 
 ---
 
@@ -139,7 +141,7 @@ Thermally fractured rock resulting from exposure to heat, typically associated w
 
 **Close but no:** Sites described as Woodland-period only, even if geographically within the Caddo region. Sites with a general "prehistoric" designation and no specific Caddo indicators in either the structured fields or the narrative. Presence of a single chipped stone tool without ceramic evidence or other Caddo indicators, unless explicitly attributed to the Caddo period by the recorder.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met hte inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
 
 ---
 
@@ -161,7 +163,8 @@ Thermally fractured rock resulting from exposure to heat, typically associated w
 
 **Close but no:** A site described as "prehistoric" with only generic lithic debitage and no diagnostic materials. Sites assigned to the Woodland period only. Sites where the recorder mentions "possible Archaic materials" without further support. Paleoindian components only.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met hte inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+
 ---
 
 ## Chipped stone (Chipped\_Stone)
@@ -202,12 +205,11 @@ Thermally fractured rock resulting from exposure to heat, typically associated w
 
 **Atypical exemplars:** No explicit category labeled "projectile point," but the artifact inventory lists a named type that is unambiguously a projectile point form (e.g., "2 Perdiz," "1 Scallorn"). Narrative describes "a bifacial point tip fragment."
 
-**Close but no:** Only debitage or cores listed with no mention of finished point forms. A "possible projectile point" noted by the recorder without further description. Drills or perforators listed but not described as projectile points. The word "point" appears only in a geographic context (e.g., "Poverty Point culture" or a place name). Descriptions of bifaces, biface preforms, or blanks without further specification of whether the represent projectile points. 
+**Close but no:** Only debitage or cores listed with no mention of finished point forms. A "possible projectile point" noted by the recorder without further description. Drills or perforators listed but not described as projectile points. The word "point" appears only in a geographic context (e.g., "Poverty Point culture" or a place name). Descriptions of bifaces, biface preforms, or blanks without further specification of whether they represent projectile points.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met hte inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
 
 ---
-
 
 ## Fire-cracked rock (FCR)
 
@@ -226,3 +228,83 @@ Thermally fractured rock resulting from exposure to heat, typically associated w
 **Atypical exemplars:** The site is described as containing hearth features and the artifact inventory includes "burned material" — if it is clear from context that this refers to rock rather than organic material or ceramics, code as present. A burned rock cluster is described in the feature section but not explicitly tallied in the artifact section.
 
 **Close but no:** Only burned bone, burned ceramics, or burned organic material mentioned, with no reference to burned or fractured rock. Scorched sediment or ash described without associated fractured rock. A hearth feature is listed but no mention is made of associated rock. "Burned" applied only to structural daub or construction materials.
+
+**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+
+---
+
+## NRHP Eligibility and Date
+
+**Data type:** categorical
+
+**Short Description:** Record of decisions made about eligibility determinations across the history of study at a site.
+
+**Definition:** Site form records include information about eligibility of the site for inclusion in the National Register of Historic Places, along with the date of the form describing that determination.
+
+**Inclusion criteria:** Code if National Register eligibility is discussed.
+
+**Exclusion criteria:** No discussion about National Register eligibility.
+
+**Categories:**
+
+Eligible -year-: The site is judged as eligible for inclusion, and the year of the form where that eligibility determination is provided.
+
+Listed -year-: The site has been listed in the register. The year of the form reporting this is provided.
+
+Potentially eligible -year-: The site is marked as having potential for inclusion in the register. This typically is paired with a recommendation for further study. The year of the form where that eligibility determination is provided.
+
+Ineligible -year-: The site is marked as not being eligible for inclusion, as the field research has gathered enough information to exclude the site from consideration. The year of the form where that eligibility determination is provided.
+
+Undetermined eligibility -year-: Similar to potentially eligible, but far more vague. This is a broader set within which Potentially Eligible falls. This is important to distinguish from "unknown," in that researchers are making statements about the regulatory status of the site. The year of the form where that eligibility determination is provided.
+
+Unknown: The particular site form, or record of study in a particular field campaign, has no information about recommendations for NRHP eligibility.
+
+**Response format:**
+
+Return a JSON array with one object per distinct eligibility determination found in the document. If no eligibility information is present, return an empty array `[]`.
+
+Each object must use exactly these keys:
+
+```json
+{
+  "status": "<one of: Eligible | Listed | Potentially eligible | Ineligible | Undetermined eligibility | Unknown>",
+  "date": "<year or date string most closely associated with this determination, e.g. '1994' or '2005-04-14', or null if no date can be associated>",
+  "determination_text": "<verbatim or near-verbatim text from the form that most directly supports this status>"
+}
+```
+
+---
+
+## Site depth
+
+**Data type:** numeric
+
+**Short Description:** Maximum depth of the site below the surface.
+
+**Definition:** Depth of the deepest archaeological material found at the archaeological site.
+
+**Inclusion criteria:** Descriptions are present of the results of excavations either in structured fields or in narrative text, and those descriptions include depth of deposits.
+
+**Exclusion criteria:** Site was never excavated, or excavation not mentioned.
+
+**Response format:**
+
+Report as a plain number in meters — digits only, no unit text (e.g., `0.4` not `"40 cmbs"` or `"0.4 m"`). Convert to meters if reported in other units. Report the deepest identified deposit across all field programs. If the site was excavated but no depth is reported, return `"not reported"`. If no excavation occurred, return `"unknown"`.
+
+---
+
+## Site area
+
+**Data type:** numeric
+
+**Short Description:** Estimated area of the site.
+
+**Definition:** Total estimated area of the site identified.
+
+**Inclusion criteria:** Descriptions of site area either in structured entries or narrative text, maps reporting the site area provided along with a scale bar.
+
+**Exclusion criteria:** No description of site area, and no site map reported.
+
+**Response format:**
+
+Report as a plain number in square meters — digits only, no unit text (e.g., `30000` not `"30000 square meters"`) and round to the nearest meter. Either read the value from the site form text directly, calculate by multiplying the site dimensions, or calculate from a map with a scale bar by fitting a bounding box around the site. If no area information exists, return `"unknown"`.
