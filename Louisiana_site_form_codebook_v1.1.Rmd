@@ -97,7 +97,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Close but no:** A historic-era site form that mentions "no prehistoric materials observed." Presence of burned rock or undated features alone, with no other indicator of pre-contact occupation. A site form for an extant historic structure that references "prehistoric regional context" in a background section without implying materials were recovered.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
 ---
 
@@ -119,7 +119,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Close but no:** A prehistoric site whose background section discusses the broader historic settlement of the region. Presence of modern intrusions (e.g., fence posts, drainage pipes) noted but not interpreted as a historic-era occupation. A site where the recorder mentions a nearby historic structure but does not indicate association with the recorded site.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
 ---
 
@@ -141,7 +141,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Close but no:** Sites described as Woodland-period only, even if geographically within the Caddo region. Sites with a general "prehistoric" designation and no specific Caddo indicators in either the structured fields or the narrative. Presence of a single chipped stone tool without ceramic evidence or other Caddo indicators, unless explicitly attributed to the Caddo period by the recorder.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
 ---
 
@@ -163,7 +163,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Close but no:** A site described as "prehistoric" with only generic lithic debitage and no diagnostic materials. Sites assigned to the Woodland period only. Sites where the recorder mentions "possible Archaic materials" without further support. Paleoindian components only.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
 ---
 
@@ -185,7 +185,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Close but no:** Only groundstone (e.g., grinding stones, manos, metates) present, with no mention of knapped materials. Only ceramics and historic-era artifacts listed. The word "stone" appears only in the context of construction materials or geology with no artifact referent.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
 ---
 
@@ -207,7 +207,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Close but no:** Only debitage or cores listed with no mention of finished point forms. A "possible projectile point" noted by the recorder without further description. Drills or perforators listed but not described as projectile points. The word "point" appears only in a geographic context (e.g., "Poverty Point culture" or a place name). Descriptions of bifaces, biface preforms, or blanks without further specification of whether they represent projectile points.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
 ---
 
@@ -229,82 +229,52 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Close but no:** Only burned bone, burned ceramics, or burned organic material mentioned, with no reference to burned or fractured rock. Scorched sediment or ash described without associated fractured rock. A hearth feature is listed but no mention is made of associated rock. "Burned" applied only to structural daub or construction materials.
 
-**Response format:** Three values per coded document: 1 or 0 for presence/absence, page numbers separated by a semicolon denoting which pages met the inclusion criteria, and a set of numbers indicating which pages met the exclusion criteria.
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
 ---
 
-## NRHP Eligibility and Date
+## NRHP Eligibility
 
 **Data type:** categorical
 
-**Short Description:** Record of decisions made about eligibility determinations across the history of study at a site.
+**Short Description:** Status of site as a potential candidate for inclusion in the National Register of Historic places or as a protected resource. 
 
-**Definition:** Site form records include information about eligibility of the site for inclusion in the National Register of Historic Places, along with the date of the form describing that determination.
+**Definition:** See short description. 
 
-**Inclusion criteria:** Code if National Register eligibility is discussed.
+**Inclusion criteria:** Code if National Register eligibilty, site eligibility, research potential of the site, or presence of graves or other protected resources is mentioned. 
 
-**Exclusion criteria:** No discussion about National Register eligibility.
+**Exclusion criteria:** No discussion about national register eligibility, site eligibility, research potential, or protected status of the site. 
 
-**Categories:**
+**Categories:** 
 
-Eligible -year-: The site is judged as eligible for inclusion, and the year of the form where that eligibility determination is provided.
+Eligible: The site is judged as eligible for inclusion. 
 
-Listed -year-: The site has been listed in the register. The year of the form reporting this is provided.
+Listed: The site had been listed in the register. The year of the form reporting this is provided. 
 
-Potentially eligible -year-: The site is marked as having potential for inclusion in the register. This typically is paired with a recommendation for further study. The year of the form where that eligibility determination is provided.
+Potentially/undetermined eligible: The site is marked as having potential for inclusion in the register, or there is a note that more research is needed to determine eligibility status. This typically is paired with a recommendation for further study.
 
-Ineligible -year-: The site is marked as not being eligible for inclusion, as the field research has gathered enough information to exclude the site from consideration. The year of the form where that eligibility determination is provided.
+Ineligible: The site is marked as not being eligible for inclusion
 
-Undetermined eligibility -year-: Similar to potentially eligible, but far more vague. This is a broader set within which Potentially Eligible falls. This is important to distinguish from "unknown," in that researchers are making statements about the regulatory status of the site. The year of the form where that eligibility determination is provided.
+Protected: The site is noted as not being eligible for inclusion, but is otherwise a protected resource, like a cemetery or homestead with graves.
 
-Unknown: The particular site form, or record of study in a particular field campaign, has no information about recommendations for NRHP eligibility.
+Unknown: The particular site form, or record of study in a particular field campaign, has no information about recommendations for NRHP eligibility. 
 
-**Response format:**
-
-Return a JSON array with one object per distinct eligibility determination found in the document. If no eligibility information is present, return an empty array `[]`.
-
-Each object must use exactly these keys:
-
-```json
-{
-  "status": "<one of: Eligible | Listed | Potentially eligible | Ineligible | Undetermined eligibility | Unknown>",
-  "date": "<year or date string most closely associated with this determination, e.g. '1994' or '2005-04-14', or null if no date can be associated>",
-  "determination_text": "<verbatim or near-verbatim text from the form that most directly supports this status>"
-}
-```
+**Response format:** Return a JSON array with one object per distinct eligibility determination found in the document. If no eligibility information is present, return an empty array. Each object must have exactly these keys: `status` (one of: Eligible | Listed | Potentially eligible | Ineligible | Protected | Unknown) and `determination_text` (verbatim or near-verbatim text from the form that most directly supports this status).
 
 ---
+
 
 ## Site depth
 
 **Data type:** numeric
 
-**Short Description:** Maximum depth of the site below the surface.
+**Short Description:** The depth of the deepest sediments that bear archaeological evidence at a site.
 
-**Definition:** Depth of the deepest archaeological material found at the archaeological site.
+**Definition:** The depth in cm below surface of the bottomost excavated sediments that contain either archaeological artifacts, features, or other evidence of archaeology. 
 
-**Inclusion criteria:** Descriptions are present of the results of excavations either in structured fields or in narrative text, and those descriptions include depth of deposits.
+**Inclusion criteria:** Descriptions of excavation results are present in structured fields or in narrative text, and those descriptions include discussion of depth of deposits. 
 
-**Exclusion criteria:** Site was never excavated, or excavation not mentioned.
+**Exclusion criteria:** Site was never excavated, or excavation not mentioned. 
 
-**Response format:**
 
-Report as a plain number in meters — digits only, no unit text (e.g., `0.4` not `"40 cmbs"` or `"0.4 m"`). Convert to meters if reported in other units. Report the deepest identified deposit across all field programs. If the site was excavated but no depth is reported, return `"not reported"`. If no excavation occurred, return `"unknown"`.
-
----
-
-## Site area
-
-**Data type:** numeric
-
-**Short Description:** Estimated area of the site.
-
-**Definition:** Total estimated area of the site identified.
-
-**Inclusion criteria:** Descriptions of site area either in structured entries or narrative text, maps reporting the site area provided along with a scale bar.
-
-**Exclusion criteria:** No description of site area, and no site map reported.
-
-**Response format:**
-
-Report as a plain number in square meters — digits only, no unit text (e.g., `30000` not `"30000 square meters"`) and round to the nearest meter. Either read the value from the site form text directly, calculate by multiplying the site dimensions, or calculate from a map with a scale bar by fitting a bounding box around the site. If no area information exists, return `"unknown"`.
+**Response format:** Return a plain number in cm (e.g., `40` not `"40 cmbs"` or `"0.4 m"`). Convert to cm if reported in other units. Report the deepest identified deposit across all field programs. If the site was excavated but no depth is reported, return `"not reported"`. If no excavation occurred, return `"unknown"`.
