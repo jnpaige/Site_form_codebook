@@ -266,15 +266,14 @@ Unknown: The particular site form, or record of study in a particular field camp
 
 ## Site depth
 
-**Data type:** numeric
+**Data type:** numeric/character
 
-**Short Description:** The depth of the deepest sediments that bear archaeological evidence at a site.
+**Short Description:** The depth of the lowest layers at a site that contain archaeological material. 
 
-**Definition:** The depth in cm below surface of the bottomost excavated sediments that contain either archaeological artifacts, features, or other evidence of archaeology. 
+**Definition:** The field identified depth of archaeological material at a site, typically identified through either shovel testing or excavation of 1x1m units.
 
-**Inclusion criteria:** Descriptions of excavation results are present in structured fields or in narrative text, and those descriptions include discussion of depth of deposits. 
+**Inclusion criteria:** Descriptions of excavation results are present in structured fields or in narrative text, and those descriptions include discussion of layers that contain archaeological artifacts or features. 
 
 **Exclusion criteria:** Site was never excavated, or excavation not mentioned. 
 
-
-**Response format:** Return a plain number in cm (e.g., `40` not `"40 cmbs"` or `"0.4 m"`). Convert to cm if reported in other units. Report the deepest identified deposit across all field programs. If the site was excavated but no depth is reported, return `"not reported"`. If no excavation occurred, return `"unknown"`.
+**Response format:** Return a plain number in cm below surface (e.g., `40` not `"40 cmbs"` or `"0.4 m"`). Convert to cm if reported in other units. If site was excavated, but there is not enough information to determine the depth of archaeological deposits, return "not reported". If no excavation occurred, return `"unknown"`.
