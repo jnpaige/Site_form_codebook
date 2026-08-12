@@ -41,12 +41,11 @@ The current Git commit details are:
 if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())
 ```
 
-This codebook was developed as part of a broader project investigating the reliability of large language models (LLMs) in performing text coding tasks in archaeology. It is targeted specifically to site forms on file with the Louisiana Division of Archaeology (Louisiana SHPO), and addresses traits corresponding to fields recorded in the Louisiana archaeological site database. Traits include presence/absence judgements about cultural components and artifact classes, as well as categorical and numeric extractions that require associating information with metadata — for example, NRHP eligibility determinations must be paired with the date of the form reporting that determination, because eligibility status changes over time. These judgements must be based on a reading of the narrative and structured fields across site forms. This codebook provides guidance on making those judgements.
+This codebook was developed as part of a broader project investigating the reliability of large language models (LLMs) in performing text coding tasks in archaeology. It is targeted specifically to site forms on file with the Louisiana Division of Archaeology (Louisiana SHPO), and addresses traits corresponding to fields recorded in the Louisiana archaeological site database. Traits include presence/absence judgements about cultural components and artifact classes, as well as categorical and numeric extractions. These judgements must be based on a reading of the narrative and structured fields across site forms. This codebook provides guidance on making those judgements.
 
 # Source Structure
 
-Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. Both are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence. Furthermore, the site forms are appended to one another when new work is performed. So, the findings of an earlier investigation may find different things from a later investigation. Categorization of a site based on one investigation should not override a presence determination in a separate investigation, when the whole text is being coded; instead each investigation should be coded independently and metadata about those investigations should be incorporated.
-
+Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. All are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence. Furthermore, the site forms are appended to one another when new work is performed. In this context, we split the form into individual investigations, and the relevant pages reporting that investigation, and only provide those to the coder.  So, the findings of an earlier investigation may find different things from a later investigation. So, each investigation should be coded independently. 
 ---
 
 # Definitions
@@ -139,7 +138,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Atypical exemplars:** The recorder uses only the term "Late Prehistoric" without naming Caddo explicitly, but the artifact inventory includes ceramic types (e.g., Friendship Engraved, Hickory Fine Engraved) diagnostic of the Caddo tradition. A site recorded near known Caddo territory where the artifact assemblage is consistent with Caddo occupation but not explicitly labeled as such by the recorder.
 
-**Close but no:** Sites described as Woodland-period only, even if geographically within the Caddo region. Sites with a general "prehistoric" designation and no specific Caddo indicators in either the structured fields or the narrative. Presence of a single chipped stone tool without ceramic evidence or other Caddo indicators, unless explicitly attributed to the Caddo period by the recorder.
+**Close but no:** Sites described as Woodland-period only, even if geographically within the Caddo region. Sites with a general "prehistoric" designation and no specific Caddo indicators in either the structured fields or the narrative.
 
 **Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
@@ -225,7 +224,7 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Typical exemplars:** Artifact tally includes a count or weight of "FCR" or "fire-cracked rock." Narrative states "burned rock was recovered from a hearth feature." A feature is described as a "burned rock midden." The recorder notes "considerable fire-cracked limestone."
 
-**Atypical exemplars:** The site is described as containing hearth features and the artifact inventory includes "burned material" — if it is clear from context that this refers to rock rather than organic material or ceramics, code as present. A burned rock cluster is described in the feature section but not explicitly tallied in the artifact section.
+**Atypical exemplars:** The site is described as containing hearth features and the artifact inventory includes "burned material" if it is clear from context that this refers to rock rather than organic material or ceramics, code as present. A burned rock cluster is described in the feature section but not explicitly tallied in the artifact section.
 
 **Close but no:** Only burned bone, burned ceramics, or burned organic material mentioned, with no reference to burned or fractured rock. Scorched sediment or ash described without associated fractured rock. A hearth feature is listed but no mention is made of associated rock. "Burned" applied only to structural daub or construction materials.
 
@@ -239,9 +238,9 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 **Short Description:** Status of site as a potential candidate for inclusion in the National Register of Historic places or as a protected resource. 
 
-**Definition:** See short description. 
+**Definition:** Eligibility statement outlining the current status of the site, or the recommendation for the site.
 
-**Inclusion criteria:** Code if National Register eligibilty, site eligibility, research potential of the site, or presence of graves or other protected resources is mentioned. 
+**Inclusion criteria:** Code if National Register eligibilty, site eligibility, research potential of the site as it relates to NRHP eligibility, or presence of graves or other protected resources is mentioned. 
 
 **Exclusion criteria:** No discussion about national register eligibility, site eligibility, research potential, or protected status of the site. 
 
@@ -249,9 +248,9 @@ Status of a site with regard to National Register of Historic Places inclusion. 
 
 Eligible: The site is judged as eligible for inclusion. 
 
-Listed: The site had been listed in the register. The year of the form reporting this is provided. 
+Listed: The site had been listed in the register.  
 
-Potentially/undetermined eligible: The site is marked as having potential for inclusion in the register, or there is a note that more research is needed to determine eligibility status. This typically is paired with a recommendation for further study.
+Potential/undetermined eligibility: The site is marked as having potential for inclusion in the register, or there is a note that more research is needed to determine eligibility status. This typically is paired with a recommendation for further study.
 
 Ineligible: The site is marked as not being eligible for inclusion
 
@@ -259,7 +258,7 @@ Protected: The site is noted as not being eligible for inclusion, but is otherwi
 
 Unknown: The particular site form, or record of study in a particular field campaign, has no information about recommendations for NRHP eligibility. 
 
-**Response format:** Return a JSON array with one object per distinct eligibility determination found in the document. If no eligibility information is present, return an empty array. Each object must have exactly these keys: `status` (one of: Eligible | Listed | Potentially eligible | Ineligible | Protected | Unknown) and `determination_text` (verbatim or near-verbatim text from the form that most directly supports this status).
+**Response format:** Categorical/character entry containing one of the following: "Eligible", "Listed", "Potential/undetermined eligibility", "Ineligible", "Protected", "Unknown". 
 
 ---
 
@@ -268,12 +267,66 @@ Unknown: The particular site form, or record of study in a particular field camp
 
 **Data type:** numeric/character
 
-**Short Description:** The depth of the lowest layers at a site that contain archaeological material. 
+**Short Description:** The depth of the deepest sediments at a site that contain archaeological material. 
 
 **Definition:** The field identified depth of archaeological material at a site, typically identified through either shovel testing or excavation of 1x1m units.
 
-**Inclusion criteria:** Descriptions of excavation results are present in structured fields or in narrative text, and those descriptions include discussion of layers that contain archaeological artifacts or features. 
+**Inclusion criteria:** Descriptions of excavation results are present in structured fields or in narrative text, and those descriptions include discussion of buried sediments that contain archaeological artifacts or features. 
 
-**Exclusion criteria:** Site was never excavated, or excavation not mentioned. 
+**Exclusion criteria:** Site is an unexcavated site that has largely architectural or surface features.
 
 **Response format:** Return a plain number in cm below surface (e.g., `40` not `"40 cmbs"` or `"0.4 m"`). Convert to cm if reported in other units. If site was excavated, but there is not enough information to determine the depth of archaeological deposits, return "not reported". If no excavation occurred, return `"unknown"`.
+
+---
+
+
+## Site area
+
+**Data type:** numeric/character
+
+**Short Description:** The reported area of the archaeological site. 
+
+**Definition:** The field identified area of the site, either in terms of two dimensions (e.g. the length of the site on the East West axis, and the length of the site on the North South axis), or as an areal measurement. 
+
+**Inclusion criteria:** The area of the site is described either in narrative, or standardized fields. 
+
+**Exclusion criteria:** The site is a landscape scale feature, network of features (like historic roads or trails), or otherwise linear features that have no clearly reported area. 
+
+**Response format:** Return a number in square meters but do not include the unit (e.g. return: 450. Do not return: 450m^2. Convert to square meters if area is reported in other units, like square kilometers, acres, or hectares. If only dimensions are reported, calculate area from those dimensions assuming a rectlinear shape.
+
+
+---
+
+
+
+## Methodology
+
+**Data type:** list
+
+**Short Description:** Methodologies employed during the site visit reported in the form. 
+
+**Definition:** Any one or more methodologies performed during the site visit. 
+
+**Inclusion criteria:** Some kind of site visit, identification, or assessment is described.
+
+**Exclusion criteria:** By definition, any of the site forms should have some form of methodology reported, at minimum the site was visited.
+
+**Categories:** 
+
+Surface survey: Site evaluate through surface survey
+
+Shovel testing: Site evaluated through excavating one or more shovel test units
+
+Test unit: Site evaluated through hand excavated test units, often in 1x1 meter cells
+
+Backhoe trenching: Site evaluated through excavation of trenches by a backhoe or some other form of construction machinery
+
+Architectural survey: Architectural assessment performed on features at the site
+
+Historical records/interviews: Information about the site gathered through historical records or local informants
+
+Geological: Formal geoarchaeological assessment
+
+
+**Response format:** JSON array containing zero or more of: "Surface survey", "Shovel testing", "Test unit", "Backhoe trenching", "Architectural survey", "Historical records/interviews", "Geological"
+
