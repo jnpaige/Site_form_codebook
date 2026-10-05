@@ -369,13 +369,13 @@ Geological: Formal geoarchaeological assessment
 
 **Inclusion criteria:** Described in text OR indicated in structured fields. Code present when authors argue that the findings relate to a logging related installation or feature relating to the logging industry. 
 
-**Exclusion criteria:** Not described in text AND not indicated in structured fields. Tramline and rail features, which are coded under Tramline or rail infrastructure. Individual artifacts, like saw fragments, or can scatters relating to encampments rather than features relating to the presence of a centralized facility.
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Tramline and rail features, which are coded under Tramline or rail infrastructure. Logging camps and workers' quarters, including can scatters and levelled benches the recorder reads as a logging camp: this trait covers centralized installations and their equipment, not the encampments of the workforce. Individual artifacts, like saw fragments, where no installation or feature is described.
 
-**Typical exemplars:**  The recorder describes a levelled bench with a tight concentration of early-twentieth-century cans and argues it represents a logging camp, although no foundations survive. 
+**Typical exemplars:** Concrete sawmill footings with an adjacent mill pond and slab pile. A sawdust or slab deposit the recorder attributes to a mill. A log landing or loading deck the recorder identifies as such.
 
-**Atypical exemplars:** Concrete sawmill footings with an adjacent mill pond and slab pile. Structural piers. Steam-donkey or skidder cable and parts. 
+**Atypical exemplars:** Structural piers with no other mill evidence described, where the recorder argues for a mill or related installation. Steam-donkey or skidder cable and parts the recorder reads as a skidder set.
 
-**Close but no:** A tram berm with no other logging evidence described. Description of impacts to sites due to modern logging activities. logging camps and workers' quarters. Can scatters described as relating to a logging camp. 
+**Close but no:** A tram berm with no other logging evidence described. Description of impacts to sites due to modern logging activities. Logging camps and workers' quarters. Can scatters described as relating to a logging camp.
 
 **Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
