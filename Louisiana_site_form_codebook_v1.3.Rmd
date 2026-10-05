@@ -363,19 +363,19 @@ Geological: Formal geoarchaeological assessment
 
 **Data type:** binary
 
-**Short Description:** archaeological evidence for logging independent of tramlins: mills, camps, equipment, artifacts.
+**Short Description:** archaeological evidence for substantial logging infrastructure independent of tramlines: mills, and related equipment.
 
-**Definition:** The form describes archaeological remains of commercial timber extraction or processing that are not tramline or rail features. This covers remains of sawmill complexes and their footings, boilers, mill ponds, splash dams, and sawdust or slab deposits; logging camps and workers' quarters; skidder sets, loading decks, and log landings; and the discarded hardware of those operations, such as cable, steam-donkey parts, and saw fragments. 
+**Definition:** The form describes archaeological remains of commercial timber extraction or processing that are not tramline or rail features. This covers remains of sawmill complexes and their footings, boilers, mill ponds, splash dams, and sawdust or slab deposits;  skidder sets, loading decks, and log landings; and the discarded hardware of those operations, such as cable, steam-donkey parts.
 
-**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when authors argue that the findings relate to the logging industry — individual artifacts like logging cable, landscape features like a levelled mill or camp pad, or an encampment the recorder reads as a logging camp.
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when authors argue that the findings relate to a logging related installation or feature relating to the logging industry. 
 
-**Exclusion criteria:** Not described in text AND not indicated in structured fields. Tramline and rail features, which are coded under Tramline or rail infrastructure. Historic refuse with no stated or arguable connection to timber work — a can scatter, however dense, that the recorder does not interpret as a logging camp, mill, or other logging feature.
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Tramline and rail features, which are coded under Tramline or rail infrastructure. Individual artifacts, like saw fragments, or can scatters relating to encampments rather than features relating to the presence of a centralized facility.
 
 **Typical exemplars:**  The recorder describes a levelled bench with a tight concentration of early-twentieth-century cans and argues it represents a logging camp, although no foundations survive. 
 
-**Atypical exemplars:** Concrete sawmill footings with an adjacent mill pond and slab pile. A logging camp with scattered domestic refuse, a dense can dump, and structural piers. Steam-donkey or skidder cable and parts.
+**Atypical exemplars:** Concrete sawmill footings with an adjacent mill pond and slab pile. Structural piers. Steam-donkey or skidder cable and parts. 
 
-**Close but no:** A tram berm with no other logging evidence described. Description of impacts to sites due to modern logging activities. 
+**Close but no:** A tram berm with no other logging evidence described. Description of impacts to sites due to modern logging activities. logging camps and workers' quarters. Can scatters described as relating to a logging camp. 
 
 **Response format:** Binary. Return `true` if the trait is present, `false` if absent.
 
