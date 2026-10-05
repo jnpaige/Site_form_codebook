@@ -1,0 +1,470 @@
+---
+title: "A codebook for collecting data from archaeological site forms in Louisiana (v1.2)"
+author: "Jonathan Paige^[New Mexico Consortium, jonathan.n.paige@Gmail.com]"
+output:
+  html_document:
+    df_print: paged
+  pdf_document:
+    keep_tex: yes
+    number_sections: yes
+    toc: true
+    toc_depth: 3
+  word_document: default
+header-includes:
+- \usepackage{float}
+- \floatplacement{figure}{hp}
+- \usepackage{booktabs}
+- \usepackage[font=small,labelfont=bf]{caption}
+- \usepackage{setspace}\doublespacing
+#abstract: |
+keywords: |
+  Louisiana archaeology; site forms; SHPO; codebook; text coding
+highlights: |
+  These are the highlights.
+---
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+# Version details:
+
+This report was generated on `r Sys.time()`
+
+The current Git commit details are:
+
+```{r}
+if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())
+```
+
+# This codebook
+
+
+
+This codebook was developed as part of a broader project investigating the reliability of large language models (LLMs) in performing text coding tasks in archaeology. It is targeted specifically to site forms on file with the Louisiana Division of Archaeology (Louisiana SHPO). Traits include presence/absence judgements about cultural components and artifact classes, as well as categorical and numeric extractions. These judgements must be based on a reading of the narrative and structured fields across site forms. This codebook provides guidance on making those judgements.
+
+# Source Structure
+
+Louisiana SHPO site forms contain a mix of structured fields (checkboxes, dropdown selections, coded entries) and free-text narrative sections. All are considered valid sources of evidence unless otherwise specified in individual trait definitions below. Pre-printed field labels on the form (e.g., column headers in artifact tallies) should not be treated as evidence that a trait is present; only filled-in values, checked boxes, or explicit narrative statements count as evidence. Furthermore, the site forms are appended to one another when new work is performed. In this context, we split the form into individual investigations, and the relevant pages reporting that investigation, and only provide those to the coder.The findings of an earlier investigation may find different things from a later investigation. So, each investigation should be coded independently. Prior to this coding process, we broke the pdfs up into just pages that are from a particular investigation, and which were likeliest to have relevant information about the traits being coded.
+---
+
+# Definitions
+
+**Pre-Contact period**
+Any occupation, use, or deposition of materials at a site that pre-dates sustained European contact in the relevant region of Louisiana. For most of Louisiana this is broadly taken as pre-dating the late 17th century (ca. pre-1700 CE), though recorders may use different cut-off dates. Both explicit statements and inferred dates (e.g., radiocarbon dates, diagnostic artifact types) are acceptable evidence.
+
+**Post-Contact period**
+Any occupation, use, or deposition of materials at a site that post-dates sustained European contact (broadly ca. post-1700 CE in Louisiana). Includes colonial French, Spanish, American, and later periods. Historic-era Euro-American, Creole, and African-descended communities may all fall within this period.
+
+**Caddo period**
+Occupation or material culture attributed to Caddo-speaking peoples or their archaeological antecedents in Louisiana, broadly spanning ca. 800–1700 CE (Late Woodland through Protohistoric), though boundaries are debated and vary by subregion. Includes both the Formative Caddo and Caddo tradition periods. Dating may be based on diagnostic ceramics, architecture, or radiocarbon dates.
+
+**Archaic period**
+Occupation or material culture attributed broadly to the Archaic, spanning roughly 10,000–3,000 BP in Louisiana, though exact boundaries vary by subregion and author. Includes Early, Middle, and Late Archaic subperiods. Dating may be based on diagnostic projectile point types, radiocarbon dates, or stratigraphic position.
+
+**Chipped stone**
+Any artifact produced through knapping (percussion or pressure flaking), including debitage (flakes, cores, shatter), tools (projectile points, scrapers, bifaces, etc.), and partially reduced nodules. Groundstone tools that also bear flaking scars do not automatically qualify; the primary reduction method should be knapping.
+
+**Projectile point**
+A bifacially or unifacially retouched tool interpreted as a tip or hafted element of a projectile weapon (spear, atlatl dart, or arrow). Formal typological assignments (e.g., "Gary point", "Perdiz point") are sufficient evidence. Fragments described as probable projectile points are acceptable. Drills and perforators should not be coded as projectile points unless the recorder explicitly identifies them as such.
+
+**Fire-cracked rock (FCR)**
+Thermally fractured rock resulting from exposure to heat, typically associated with cooking features, earth ovens, or hearths. May be described as burned rock, fire-cracked rock, FCR, heat-fractured rock, or similar terms. Rock that is merely discolored or scorched but not fractured does not qualify.
+
+**NRHP eligibility**
+Status of a site with regard to National Register of Historic Places inclusion. Eligible sites are eligible for inclusion; listed sites are listed; most sites may have undetermined or potential eligibility, barring more information typically gained through historical records or more intensive fieldwork focused on testing the site for research potential.
+
+---
+
+# Traits
+
+## Pre-Contact component (Pre\_Conta)
+
+**Data type:** binary
+
+**Short Description:** Evidence of a pre-contact occupation or use of the site.
+
+**Definition:** The site form records evidence either in structured fields or narrative text indicating that some portion of the site's archaeological record dates to the period before sustained European contact (broadly pre-1700 CE in Louisiana). This may include diagnostic artifacts, radiocarbon dates, or interpretive statements by the recorder.
+
+**Inclusion criteria:** Evidence in text OR indicated in structured fields (e.g., period checkboxes, cultural affiliation fields, artifact type tallies referencing prehistoric types).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. A site described as exclusively historic-era should be coded as absent.
+
+**Typical exemplars:** Recorder checks "prehistoric" in the cultural period field. Narrative states cases like "the site contains a prehistoric component" or a cultural affiliation field lists "unknown prehistoric." Sites that are lithic scatters, or map onto any cultural phase before European contact.
+
+**Atypical exemplars:** Historic sites with presence of prehistoric artifacts. A site is described as "multicomponent" and the prehistoric component is mentioned only in passing in the survey narrative.
+
+**Close but no:** A historic-era site form that mentions "no prehistoric materials observed." Presence of burned rock or undated features alone, with no other indicator of pre-contact occupation. A site form for an extant historic structure that references "prehistoric regional context" in a background section without implying materials were recovered.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Post-Contact component (Post\_Conta)
+
+**Data type:** binary
+
+**Short Description:** Evidence of a post-contact occupation or use of the site.
+
+**Definition:** The site form records evidence indicating that some portion of the site's archaeological record dates to the period after sustained European contact (broadly post-1700 CE in Louisiana). This may include historic-era artifact types, documentary references, architectural remains, or explicit interpretive statements.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., period checkboxes listing "historic," "colonial," "19th century," etc.; artifact tallies listing historic ceramics, glass, nails, or other temporally diagnostic historic materials).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. A site described as exclusively prehistoric should be coded as absent.
+
+**Typical exemplars:** Recorder checks "historic" in the period field. Narrative states "the site contains historic-era debris including European-made ceramics and cut nails." Cultural affiliation listed as "Anglo-American" or "French Colonial." A standing structure on the site dates to the 19th century.
+
+**Atypical exemplars:** No explicit period designation, but the artifact inventory lists whiteware sherds, window glass, and wire nails with no mention of prehistoric materials. A site described as "multicomponent" where the historic component is noted only briefly.
+
+**Close but no:** A prehistoric site whose background section discusses the broader historic settlement of the region. Presence of modern intrusions (e.g., fence posts, drainage pipes) noted but not interpreted as a historic-era occupation. A site where the recorder mentions a nearby historic structure but does not indicate association with the recorded site.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Caddo period component (Caddo\_Unkn)
+
+**Data type:** binary
+
+**Short Description:** Evidence of a Caddo-period occupation, regardless of specific subperiod assignment.
+
+**Definition:** The site form records evidence attributing some portion of the site's archaeological record to Caddo-speaking peoples or the Caddo archaeological tradition, broadly spanning ca. 800–1700 CE. The code name "Caddo_Unkn" reflects that the specific Caddo subperiod (e.g., Early, Middle, Late Caddo; Formative Caddo; Protohistoric) may be unknown or unspecified. This trait should be coded as present whenever Caddo affiliation is indicated, regardless of whether a finer subperiod is also assigned.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., cultural affiliation field lists "Caddo," "Caddoan," or a named Caddo-tradition phase; artifact field lists Caddo ceramic types).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Archaic, Woodland, or other non-Caddo prehistoric components should not be coded as present here.
+
+**Typical exemplars:** Cultural affiliation field states "Caddo." Narrative describes "Caddo ceramic sherds including engraved fine ware." A named phase such as "Haley," "Belcher," or "Kinsloe" is listed. The recorder assigns the site to the "Late Prehistoric" period and describes Caddo-tradition ceramic types.
+
+**Atypical exemplars:** The recorder uses only the term "Late Prehistoric" without naming Caddo explicitly, but the artifact inventory includes ceramic types (e.g., Friendship Engraved, Hickory Fine Engraved) diagnostic of the Caddo tradition. A site recorded near known Caddo territory where the artifact assemblage is consistent with Caddo occupation but not explicitly labeled as such by the recorder.
+
+**Close but no:** Sites described as Woodland-period only, even if geographically within the Caddo region. Sites with a general "prehistoric" designation and no specific Caddo indicators in either the structured fields or the narrative.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Archaic period component (Arch\_Unkn)
+
+**Data type:** binary
+
+**Short Description:** Evidence of an Archaic-period occupation, regardless of specific subperiod (Early, Middle, or Late Archaic).
+
+**Definition:** The site form records evidence attributing some portion of the site's archaeological record to the Archaic period, broadly spanning ca. 10,000–3,000 BP. The code name "Arch\_Unkn" reflects that the specific Archaic subperiod may be unknown. This trait is coded as present whenever an Archaic occupation is indicated, regardless of whether a finer temporal assignment is also made.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., period field lists "Archaic," "Early Archaic," "Middle Archaic," "Late Archaic"; artifact field lists Archaic diagnostic projectile point types).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Paleoindian, Woodland, Caddo, or other non-Archaic components should not be coded as present here.
+
+**Typical exemplars:** Period field states "Archaic." Narrative describes "a Late Archaic midden." Diagnostic projectile point types associated with the Archaic (e.g., Gary, Motley, Evans, Pontchartrain) are listed in the artifact inventory. Recorder notes "undifferentiated Archaic lithic scatter."
+
+**Atypical exemplars:** No explicit period designation, but the artifact inventory lists only Gary or Evans points (well-established Archaic diagnostics in Louisiana) with no other temporal indicators. A site described as a shell midden that the recorder assigns to "prehistoric" but whose radiocarbon dates fall within the Archaic range.
+
+**Close but no:** A site described as "prehistoric" with only generic lithic debitage and no diagnostic materials. Sites assigned to the Woodland period only. Sites where the recorder mentions "possible Archaic materials" without further support. Paleoindian components only.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Chipped stone (Chipped\_Stone)
+
+**Data type:** binary
+
+**Short Description:** Presence of chipped stone artifacts, including tools and/or debitage.
+
+**Definition:** The site form records the presence of any artifact produced primarily through knapping (flaking), including but not limited to: debitage (flakes, cores, angular shatter), bifaces, projectile points, scrapers, drills, perforators, and other flaked stone tools. Groundstone tools are excluded unless they also bear unambiguous knapping scars interpreted as intentional reduction.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., artifact tally includes debitage, flakes, cores, bifaces, or other knapped tool categories; narrative mentions lithic scatter or chipped stone).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Sites with only groundstone, ceramics, or other non-knapped artifact classes should be coded as absent.
+
+**Typical exemplars:** Artifact tally includes a count of "lithic debitage" or "flakes." Narrative states "chipped stone tools were recovered." Projectile points, scrapers, or bifaces are listed in the artifact inventory. The site is described as a "lithic scatter."
+
+**Atypical exemplars:** No explicit mention of chipped stone, but a projectile point is listed in the artifact inventory (projectile points are chipped stone by definition). Narrative mentions "prehistoric artifacts" and the only illustrated or described items are flaked tools.
+
+**Close but no:** Only groundstone (e.g., grinding stones, manos, metates) present, with no mention of knapped materials. Only ceramics and historic-era artifacts listed. The word "stone" appears only in the context of construction materials or geology with no artifact referent.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Projectile point (Proj\_Point)
+
+**Data type:** binary
+
+**Short Description:** Presence of one or more projectile points.
+
+**Definition:** The site form records the presence of at least one artifact identified as a projectile point — a bifacially or unifacially retouched tool interpreted as the tip or hafted element of a spear, atlatl dart, or arrow. Formal typological designations (e.g., "Gary point," "Alba point," "Perdiz point") are sufficient. Fragments described as probable projectile points are acceptable. Tools identified primarily as drills or perforators are excluded unless the recorder explicitly also identifies them as projectile points.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., artifact tally includes "projectile point," "point," or a named type; narrative describes points or arrowheads).
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. General lithic debitage or undifferentiated flakes without mention of projectile points should be coded as absent.
+
+**Typical exemplars:** Artifact tally lists "3 projectile points." Narrative states "a Gary point was recovered from the surface." The recorder lists "Alba points" or "arrowheads" in the artifact inventory. A point fragment is described as such.
+
+**Atypical exemplars:** No explicit category labeled "projectile point," but the artifact inventory lists a named type that is unambiguously a projectile point form (e.g., "2 Perdiz," "1 Scallorn"). Narrative describes "a bifacial point tip fragment."
+
+**Close but no:** Only debitage or cores listed with no mention of finished point forms. A "possible projectile point" noted by the recorder without further description. Drills or perforators listed but not described as projectile points. The word "point" appears only in a geographic context (e.g., "Poverty Point culture" or a place name). Descriptions of bifaces, biface preforms, or blanks without further specification of whether they represent projectile points.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Fire-cracked rock (FCR)
+
+**Data type:** binary
+
+**Short Description:** Presence of fire-cracked rock (thermally fractured rock).
+
+**Definition:** The site form records the presence of rock that has been fractured as a result of exposure to high heat, typically associated with cooking features, earth ovens, hearths, or burned rock middens. May be referred to as "fire-cracked rock," "FCR," "burned rock," "heat-fractured rock," "fire-altered rock," or similar terms. Rock that is merely discolored or stained without fracturing does not qualify.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields (e.g., artifact or feature tally includes FCR, burned rock, or a feature type associated with FCR such as "burned rock midden" or "earth oven").
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Thermally discolored but non-fractured rock does not qualify. Burned structural materials (e.g., burned daub, burned brick) are excluded.
+
+**Typical exemplars:** Artifact tally includes a count or weight of "FCR" or "fire-cracked rock." Narrative states "burned rock was recovered from a hearth feature." A feature is described as a "burned rock midden." The recorder notes "considerable fire-cracked limestone."
+
+**Atypical exemplars:** The site is described as containing hearth features and the artifact inventory includes "burned material" if it is clear from context that this refers to rock rather than organic material or ceramics, code as present. A burned rock cluster is described in the feature section but not explicitly tallied in the artifact section.
+
+**Close but no:** Only burned bone, burned ceramics, or burned organic material mentioned, with no reference to burned or fractured rock. Scorched sediment or ash described without associated fractured rock. A hearth feature is listed but no mention is made of associated rock. "Burned" applied only to structural daub or construction materials.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## NRHP Eligibility
+
+**Data type:** categorical
+
+**Short Description:** Status of site as a potential candidate for inclusion in the National Register of Historic places or as a protected resource. 
+
+**Definition:** Eligibility statement outlining the current status of the site, or the recommendation for the site.
+
+**Inclusion criteria:** Code if National Register eligibilty, site eligibility, research potential of the site as it relates to NRHP eligibility, or presence of graves or other protected resources is mentioned. 
+
+**Exclusion criteria:** No discussion about national register eligibility, site eligibility, research potential, or protected status of the site. 
+
+**Categories:** 
+
+Eligible: The site is judged as eligible for inclusion. 
+
+Listed: The site had been listed in the register.  
+
+Potential/undetermined eligibility: The site is marked as having potential for inclusion in the register, or there is a note that more research is needed to determine eligibility status. This typically is paired with a recommendation for further study.
+
+Ineligible: The site is marked as not being eligible for inclusion
+
+Protected: The site is noted as not being eligible for inclusion, but is otherwise a protected resource, like a cemetery or homestead with graves.
+
+Unknown: The particular site form, or record of study in a particular field campaign, has no information about recommendations for NRHP eligibility. 
+
+**Response format:** Categorical/character entry containing one of the following: "Eligible", "Listed", "Potential/undetermined eligibility", "Ineligible", "Protected", "Unknown". 
+
+---
+
+
+## Site depth
+
+**Data type:** numeric/character
+
+**Short Description:** The depth of the deepest sediments at a site that contain archaeological material. 
+
+**Definition:** The field identified depth of archaeological material at a site, typically identified through either shovel testing or excavation of 1x1m units.
+
+**Inclusion criteria:** Descriptions of excavation results are present in structured fields or in narrative text, and those descriptions include discussion of buried sediments that contain archaeological artifacts or features. 
+
+**Exclusion criteria:** Site is an unexcavated site that has largely architectural or surface features.
+
+**Response format:** Return a plain number in cm below surface (e.g., `40` not `"40 cmbs"` or `"0.4 m"`). Convert to cm if reported in other units. If site was excavated, but there is not enough information to determine the depth of archaeological deposits, return "not reported". If no excavation occurred, return `"unknown"`.
+
+---
+
+
+## Site area
+
+**Data type:** numeric/character
+
+**Short Description:** The reported area of the archaeological site. 
+
+**Definition:** The field identified area of the site, either in terms of two dimensions (e.g. the length of the site on the East West axis, and the length of the site on the North South axis), or as an areal measurement. 
+
+**Inclusion criteria:** The area of the site is described either in narrative, or standardized fields. 
+
+**Exclusion criteria:** The site is a landscape scale feature, network of features (like historic roads or trails), or otherwise linear features that have no clearly reported area. 
+
+**Response format:** Return a number in square meters but do not include the unit (e.g. return: 450. Do not return: 450m^2. Convert to square meters if area is reported in other units, like square kilometers, acres, or hectares. If only dimensions are reported, calculate area from those dimensions assuming a rectlinear shape.
+
+
+---
+
+
+
+## Methodology
+
+**Data type:** list
+
+**Short Description:** Methodologies employed during the site visit reported in the form. 
+
+**Definition:** Any one or more methodologies performed during the site visit. 
+
+**Inclusion criteria:** Some kind of site visit, identification, or assessment is described.
+
+**Exclusion criteria:** By definition, any of the site forms should have some form of methodology reported, at minimum the site was visited.
+
+**Categories:** 
+
+Surface survey: Site evaluate through surface survey
+
+Shovel testing: Site evaluated through excavating one or more shovel test units
+
+Test unit: Site evaluated through hand excavated test units, often in 1x1 meter cells
+
+Backhoe trenching: Site evaluated through excavation of trenches by a backhoe or some other form of construction machinery
+
+Architectural survey: Architectural assessment performed on features at the site
+
+Historical records/interviews: Information about the site gathered through historical records or local informants
+
+Geological: Formal geoarchaeological assessment
+
+
+**Response format:** JSON array containing zero or more of: "Surface survey", "Shovel testing", "Test unit", "Backhoe trenching", "Architectural survey", "Historical records/interviews", "Geological"
+
+
+---
+
+## Historic or modern site
+
+**Data type:** binary
+
+**Short Description:** The site includes physical remains of post-contact activity amounting to a site in its own right, not merely stray historic material.
+
+**Definition:** The form describes material remains of Euro-American, African-American, or other post-contact occupation or industry at the site — structures, foundations, earthworks, refuse deposits, or artifact concentrations — such that the location functioned as a historic- or modern-era site. 
+
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when the form describes a concentration, deposit, or feature of post-contact material.
+
+**Exclusion criteria:**  Historic material discussed only in regional background, or present at a nearby but distinct location.
+
+**Typical exemplars:** "A scatter of sanitary seal cans and amethyst glass covers a 10 m area." Brick pier foundations with associated domestic refuse. A dump of 20th-century bottles in a borrow pit. The recorder checks "historic" and describes a structural depression.
+
+**Atypical exemplars:** The form records only a linear earthen berm and scattered spikes, never using the word "historic". An otherwise pre-contact site whose narrative mentions in passing a collapsed structure and associated whiteware. A site described only as "a dump".
+
+**Close but no:**  Present-day silviculture, roads, or logging impacts recorded as site condition rather than as cultural remains.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Logging industry
+
+**Data type:** binary
+
+**Short Description:** Archaeological evidence of commercial timber extraction or processing.
+
+**Definition:** The form describes remains attributable to commercial logging, mills, camps, and the transport and equipment infrastructure of timber extraction. This covers sawmill complexes, logging camps and their worker housing, skidder sets, loading decks and log landings, splash dams, mill ponds, sawdust and slab deposits, and the discarded hardware of those operations. 
+
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when authors argue that the findings relate to the logging industry, either individual artifacts like logging cables, or landscape features like tramlines, or encampments consistent with logging camps.
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Historic refuse with no stated or arguable connection to timber work — a can scatter, however dense or linear, that the recorder does not interpret as a camp, mill, or other logging feature. 
+
+**Typical exemplars:** Concrete sawmill footings with an adjacent mill pond and slab pile. A logging camp with scattered domestic refuse, a dense can dump, and structural piers. Steam-donkey or skidder cable and parts. "Remains of the Crowell Lumber Company tram and camp."
+
+**Atypical exemplars:** 
+
+**Close but no:** A linear or dispersed scatter of hole-in-top cans in cutover pine, recorded without any interpretation of function. Clearcut, skid trails, or fire lanes from recent harvest, recorded as impacts to the site. "Silviculture" checked as present land use — this is the current use of much Kisatchie National Forest land and is not evidence of a historic logging site. A site that merely lies within a national forest.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Logging camp
+
+**Data type:** binary
+
+**Short Description:** A habitation or work camp occupied by timber crews, as distinct from mills, tramlines, or isolated logging equipment.
+
+**Definition:** The form describes the remains of a camp occupied by workers engaged in commercial timber extraction. Usually a concentration of domestic refuse — hole-in-top and sanitary seal cans, bottle glass, ceramics, enamelware — often with levelled pads, structural piers, or rows of shack or tent platforms, and frequently near a tram spur, loading deck, or cutting front. Occupation is typically brief, a season to a few years, so the assemblage is tight in date. This is a subset of Logging industry: a site coded present here should also be coded present there.
+
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when the recorder identifies the site as a logging, timber, lumber, or mill camp, or argues that a concentration of habitation debris represents workers housed for timber operations. The attribution has to come from the form; a domestic scatter the recorder does not connect to timber work is not a logging camp.
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Mills, tramlines, and isolated logging hardware with no habitation component described. Domestic occupation the recorder attributes to an independent household rather than to timber operations.
+
+**Typical exemplars:** "A logging camp is indicated by a dense scatter of hole-in-top cans, bottle glass, and brick piers along the tram grade." The recorder names the site as a camp of a named lumber company. Rows of levelled pads with associated domestic refuse in cutover pine.
+
+**Atypical exemplars:** A tight concentration of early-twentieth-century domestic refuse on a levelled bench beside a tram spur, which the recorder interprets as workers' quarters without using the word "camp".
+
+**Close but no:** A sawmill with footings and a mill pond but no habitation described — Logging industry, not a camp. A tram grade alone. A tenant house or farmstead the recorder treats as an independent household. A can scatter in cutover pine with no interpretation offered.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Homestead or farmstead
+
+**Data type:** binary
+
+**Short Description:** Remains of a rural domestic occupation, with or without associated agricultural features.
+
+**Definition:** The form describes the remains of a dwelling and its associated yard and outbuildings a house site, tenant house, or farm complex. Diagnostic elements include structural foundations, piers, or chimney falls; wells, cisterns, and privies; barns, sheds, and other outbuildings; yard scatters of domestic refuse; and fence lines or field systems. The form may also simply describe scatters of artifacts, and the author may intuit that it is a farmstead/homestead based on positioning on the landscape and other context clues. 
+
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when the form describes domestic structural remains, or a domestic refuse scatter in direct association with a structure, well, or cistern. Also code present where the recorder argues for a house site. Terms such as "old home place", "homestead", or "farmstead" are sufficient on their own.
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. A refuse dump with no structural or water-feature association and no argument by the recorder for a dwelling that is a Historic or modern site, but not a homestead. Worker housing within a logging camp, unless the form describes independent domestic or agricultural occupation.
+
+**Typical exemplars:** A chimney fall with surrounding whiteware, bottle glass, and cut nails. Brick piers, a hand-dug well, and a privy depression. "The site is the location of the old Dowden home place." A barn foundation with associated fencing.
+
+**Atypical exemplars:** A levelled pad on a low rise with a bounded concentration of whiteware, bottle glass, and nails, which the recorder interprets as a house site despite no surviving foundation. A domestic refuse scatter with an associated hand-dug well and no other structural evidence.
+
+**Close but no:** An isolated bottle dump in a borrow pit. A logging camp described purely as temporary quarters. A standing modern residence recorded as a land-use condition rather than as an archaeological site.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Tramline or rail infrastructure
+
+**Data type:** binary
+
+**Short Description:** Remains of rail-based transport, including logging tram grades and railroad earthworks.
+
+**Definition:** The form identifies remains of a rail or tram corridor — a tram grade or railroad berm, flanking borrow ditches, cuts through rising ground, trestle pilings and bents, culverts, turnarounds and spurs — or rail hardware such as ties, tie impressions, rails, spikes, and tie plates. 
+
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when the recorder names a tram, tramline, railroad, rail bed, rail grade, or spur, or describes a linear feature and argues that it served rail or tram transport. Rail hardware identified as such — ties, tie impressions, rails, spikes, tie plates — is sufficient. Trestle bents or culverts the recorder attributes to a rail crossing are sufficient.
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. A linear raised feature, berm, or parallel ditch system recorded without the recorder attributing it to rail or tram use. Linear features the form attributes to another function — a levee, a drainage or irrigation ditch, a road, a logging skid trail, a pipeline or utility corridor, a firebreak.
+
+**Typical exemplars:** "A tram berm runs north-south across the site." A raised linear grade with parallel borrow ditches. Rail spikes and tie impressions in a graded corridor. Concrete or timber trestle bents crossing a drainage.
+
+**Atypical exemplars:** "A low berm crosses the northern edge of the site; this is almost certainly the Lutcher and Moore tram, which is shown on the 1916 quadrangle." The recorder describes an elevated linear feature, notes tie impressions at intervals, and concludes it is a tram grade. A culvert the recorder attributes to a rail crossing, with no grade surviving.
+
+**Close but no:** "A low linear rise, approximately 3 m wide, crosses the terrace," with no function assigned — absent, however much the morphology suggests a grade. Parallel ditches flanking an unexplained elevated strip. An alignment of decayed timbers across a slough, uninterpreted. A natural levee or point-bar ridge. A roadbed the recorder identifies as a road.
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
+
+## Tar kiln or historic depression
+
+**Data type:** binary
+
+**Short Description:** A flag for naval-stores production — tar kilns, or broad historic depressions of a form consistent with them.
+
+**Definition:** The form describes either direct evidence of tar, pitch, or turpentine production, or a feature whose morphology is consistent with a tar kiln and which the form does not otherwise explain. Direct evidence includes a tar kiln proper — a broad, shallow, roughly circular depression, often 5 to 15 m across, frequently with charcoal, burned sand, or a central collection channel. Archaeological evidence of turpentining specifically is hard to recover, so this trait is deliberately framed as a FLAG FOR REVIEW rather than a determination: a broad shallow historic-period depression of the right form, consistent with eighteenth- to nineteenth-century tar production, should be coded present even if the site form author ascribed it to a different function so that it can be examined. .
+
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present for any named tar kiln, pitch kiln, or turpentine feature. For a broad shallow circular depression that the recorder records as a cultural feature of historic age without assigning it a function, particularly where charcoal, ash, or burned sand is noted.
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Depressions the form attributes to another cause — a cellar or structural depression, a privy, a well, a borrow pit, a treefall, a crater, a stock pond. Small hearths or isolated charcoal concentrations lacking the characteristic broad shallow form.
+
+**Typical exemplars:** "A tar kiln is present on the ridge nose, measuring approximately 8 m in diameter with a charcoal-stained floor." Catfaced longleaf pines with associated Herty cups. A pitch kiln identified by the recorder.
+
+**Atypical exemplars:** "A broad shallow circular depression, roughly 9 m across, of unknown function, with charcoal flecking," recorded on an otherwise pre-contact site. A ring of burned sand with no interpretation offered.
+
+**Close but no:** 
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+---
