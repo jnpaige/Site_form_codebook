@@ -359,25 +359,49 @@ Geological: Formal geoarchaeological assessment
 
 
 
+## Mill
+
+**Data type:** binary
+
+**Short Description:** Remains of a timber-processing mill.
+
+**Definition:** The form describes archaeological remains of a mill that processed timber — a sawmill, planing mill, shingle mill, or stave mill — as a located industrial installation. What indicates one includes concrete or masonry machinery footings and piers, boiler and steam-plant fittings, a mill pond with its dam or splash dam, a mill race or flume, and the sawdust piles and slab deposits that accumulate where logs were cut. A mill is a site type, not a feature class: it occupies a place, and the other logging traits often apply to the same site, since a mill commonly sits at the end of a tramline and alongside the quarters of the people who worked it. 
+
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when the recorder identifies the site, or a feature on it, as a timber-processing mill of any kind, or argues that the remains represent one. A place name of the form "<name> Mill" is sufficient where the recorder treats it as the archaeological identification of the site rather than as nearby geography.
+
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Grist, corn, cane and sugar mills, which processed crops rather than timber. A mill named only as a landmark locating the site, where the recorder describes no remains of it on the site. Modern or operating mills recorded as a land-use condition rather than as archaeological remains.
+
+**Typical exemplars:** Concrete machinery footings with an adjacent mill pond and a slab pile. "This is the site of the Crowell Lumber Company sawmill." A boiler base, brick rubble and a sawdust deposit the recorder reads as a mill.
+
+**Atypical exemplars:** A large sawdust deposit and a dam remnant with no surviving footings, which the recorder nonetheless interprets as a mill site. A small portable or "peckerwood" mill the recorder identifies as such, surviving only as a sawdust pile and scattered hardware. A shingle or stave mill rather than a sawmill.
+
+**Close but no:** A tram berm running toward a mill, where no mill remains are described on the site. A gristmill or cane mill. A sawdust scatter with no mill identified or argued for by the recorder. A mill appearing only in the form's historical background section, without an argument that the site itself is where that mill used to be located. 
+
+**Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
+
+
+
 ## Other logging infrastructure
 
 **Data type:** binary
 
-**Short Description:** archaeological evidence for substantial logging infrastructure independent of tramlines: mills, and related equipment.
+**Short Description:** archaeological evidence for logging infrastructure other than tramlines and mills: the extraction and loading apparatus and its hardware.
 
-**Definition:** The form describes archaeological remains of commercial timber extraction or processing that are not tramline or rail features. This covers remains of sawmill complexes and their footings, boilers, mill ponds, splash dams, and sawdust or slab deposits;  skidder sets, loading decks, and log landings; and the discarded hardware of those operations, such as cable, steam-donkey parts.
+**Definition:** The form describes archaeological remains of commercial timber extraction that are neither rail features nor a mill. This covers the apparatus of moving logs out of the woods and onto transport: skidder sets, loading decks and log landings, cable systems and their anchors, and the discarded hardware of those operations, such as cable, chokers and steam-donkey parts.
 
-**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when authors argue that the findings relate to a logging related installation or feature relating to the logging industry. 
+**Inclusion criteria:** Described in text OR indicated in structured fields. Code present when authors argue that the findings relate to a logging related installation or feature relating to the logging industry, and that installation is neither a tramline nor a mill.
 
-**Exclusion criteria:** Not described in text AND not indicated in structured fields. Tramline and rail features, which are coded under Tramline or rail infrastructure. Logging camps and workers' quarters, including can scatters and levelled benches the recorder reads as a logging camp: this trait covers centralized installations and their equipment, not the encampments of the workforce. Individual artifacts, like saw fragments, where no installation or feature is described.
+**Exclusion criteria:** Not described in text AND not indicated in structured fields. Tramline and rail features, which are coded under Tramline or rail infrastructure. Mills of any timber-processing kind, together with their ponds, dams, races, machinery footings and sawdust or slab deposits, which are coded under Mill. Logging camps and workers' quarters, including can scatters and levelled benches the recorder reads as a logging camp: this trait covers installations and equipment, not the encampments of the workforce. Individual artifacts, like saw fragments, where no installation or feature is described.
 
-**Typical exemplars:** Concrete sawmill footings with an adjacent mill pond and slab pile. A sawdust or slab deposit the recorder attributes to a mill. A log landing or loading deck the recorder identifies as such.
+**Typical exemplars:** A log landing or loading deck the recorder identifies as such. Steam-donkey or skidder cable and parts the recorder reads as a skidder set. A cable anchor stump with surviving hardware.
 
-**Atypical exemplars:** Structural piers with no other mill evidence described, where the recorder argues for a mill or related installation. Steam-donkey or skidder cable and parts the recorder reads as a skidder set.
+**Atypical exemplars:** Structural piers with no other evidence described, where the recorder argues for a logging installation that is not a mill.
 
-**Close but no:** A tram berm with no other logging evidence described. Description of impacts to sites due to modern logging activities. Logging camps and workers' quarters. Can scatters described as relating to a logging camp.
+**Close but no:** A tram berm with no other logging evidence described. Sawmill footings, a mill pond, or a slab pile, which are coded under Mill. Description of impacts to sites due to modern logging activities. Logging camps and workers' quarters. Can scatters described as relating to a logging camp.
 
 **Response format:** Binary. Return `true` if the trait is present, `false` if absent.
+
 
 
 
